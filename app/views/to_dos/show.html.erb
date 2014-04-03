@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @to_do.name %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @to_do.priority %>
+</p>
+
+<div data-role="footer">
+	<%= link_to 'Edit', edit_to_do_path(@to_do) %>
+	<%= link_to 'Back', to_dos_path %>
+</div>
