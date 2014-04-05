@@ -1331,3 +1331,761 @@ Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.1ms)
   [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403173614')
   [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140403181659')[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-04 23:16:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/markbrown/.rvm/gems/ruby-2.0.0-p353/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 34ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:16:54 -0400
+Processing by ToDosController#index as HTML
+  [1m[35mToDo Load (0.5ms)[0m  SELECT "to_dos".* FROM "to_dos"
+  Rendered to_dos/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 3301ms (Views: 3296.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:16:57 -0400
+
+
+Started GET "/to_dos/new" for 127.0.0.1 at 2014-04-04 23:17:02 -0400
+Processing by ToDosController#new as HTML
+  Rendered to_dos/_form.html.erb (28.1ms)
+  Rendered to_dos/new.html.erb within layouts/application (36.4ms)
+Completed 200 OK in 48ms (Views: 46.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/to_dos" for 127.0.0.1 at 2014-04-04 23:17:18 -0400
+Processing by ToDosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"I must conquer everything!", "priority"=>"3"}, "commit"=>"Create To do"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.2ms)[0m  INSERT INTO "to_dos" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sat, 05 Apr 2014 03:17:18 UTC +00:00], ["name", "I must conquer everything!"], ["priority", 3], ["updated_at", Sat, 05 Apr 2014 03:17:18 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 12ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:17:18 -0400
+Processing by ToDosController#index as HTML
+  [1m[35mToDo Load (0.2ms)[0m  SELECT "to_dos".* FROM "to_dos"
+  Rendered to_dos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/to_dos/1" for 127.0.0.1 at 2014-04-04 23:17:52 -0400
+Processing by ToDosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "id"=>"1"}
+  [1m[36mToDo Load (0.3ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "to_dos" WHERE "to_dos"."id" = ?[0m  [["id", 1]]
+  [1m[35m (8.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 15ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:17:52 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+Processing by ToDosController#index as HTML
+  [1m[35mToDo Load (0.2ms)[0m  SELECT "to_dos".* FROM "to_dos"
+  Rendered to_dos/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:18:17 -0400
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:18:19 -0400
+
+
+Started GET "/to_dos/new" for 127.0.0.1 at 2014-04-04 23:18:22 -0400
+Processing by ToDosController#new as HTML
+  Rendered to_dos/_form.html.erb (2.4ms)
+  Rendered to_dos/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/to_dos" for 127.0.0.1 at 2014-04-04 23:18:30 -0400
+Processing by ToDosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"Blah blah blah", "priority"=>"3"}, "commit"=>"Create To do"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "to_dos" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 05 Apr 2014 03:18:30 UTC +00:00], ["name", "Blah blah blah"], ["priority", 3], ["updated_at", Sat, 05 Apr 2014 03:18:30 UTC +00:00]]
+  [1m[35m (8.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 13ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:18:30 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/to_dos/2/edit" for 127.0.0.1 at 2014-04-04 23:19:24 -0400
+Processing by ToDosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered to_dos/_form.html.erb (2.6ms)
+  Rendered to_dos/edit.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/to_dos/2" for 127.0.0.1 at 2014-04-04 23:19:28 -0400
+Processing by ToDosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"Blah blah blahlkl", "priority"=>"1"}, "commit"=>"Update To do", "id"=>"2"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "to_dos" SET "name" = ?, "priority" = ?, "updated_at" = ? WHERE "to_dos"."id" = 2[0m  [["name", "Blah blah blahlkl"], ["priority", 1], ["updated_at", Sat, 05 Apr 2014 03:19:28 UTC +00:00]]
+  [1m[35m (8.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 14ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:19:28 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/to_dos/new" for 127.0.0.1 at 2014-04-04 23:20:24 -0400
+Processing by ToDosController#new as HTML
+  Rendered to_dos/_form.html.erb (2.4ms)
+  Rendered to_dos/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/to_dos/new" for 127.0.0.1 at 2014-04-04 23:26:19 -0400
+Processing by ToDosController#new as HTML
+  Rendered to_dos/_form.html.erb (7.6ms)
+  Rendered to_dos/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:26:20 -0400
+
+
+Started GET "/to_dos/new" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+Processing by ToDosController#new as HTML
+  Rendered to_dos/_form.html.erb (2.5ms)
+  Rendered to_dos/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:27:01 -0400
+
+
+Started POST "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:13 -0400
+Processing by ToDosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"Another To-Do", "priority"=>"2"}, "commit"=>"Create To do"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "to_dos" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 05 Apr 2014 03:27:13 UTC +00:00], ["name", "Another To-Do"], ["priority", 2], ["updated_at", Sat, 05 Apr 2014 03:27:13 UTC +00:00]]
+  [1m[35m (8.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 16ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:13 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/to_dos/2" for 127.0.0.1 at 2014-04-04 23:27:19 -0400
+Processing by ToDosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "id"=>"2"}
+  [1m[35mToDo Load (0.3ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  DELETE FROM "to_dos" WHERE "to_dos"."id" = ?  [["id", 2]]
+  [1m[36m (8.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 17ms (ActiveRecord: 11.0ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:20 -0400
+Processing by ToDosController#index as HTML
+  [1m[35mToDo Load (0.2ms)[0m  SELECT "to_dos".* FROM "to_dos"
+  Rendered to_dos/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/to_dos/3" for 127.0.0.1 at 2014-04-04 23:27:24 -0400
+Processing by ToDosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "id"=>"3"}
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "to_dos" WHERE "to_dos"."id" = ?[0m  [["id", 3]]
+  [1m[35m (8.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 11ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:24 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:32 -0400
+Processing by ToDosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"Save", "priority"=>"2"}, "commit"=>"Create To do"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "to_dos" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 05 Apr 2014 03:27:32 UTC +00:00], ["name", "Save"], ["priority", 2], ["updated_at", Sat, 05 Apr 2014 03:27:32 UTC +00:00]]
+  [1m[35m (8.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 13ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:32 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (52.2ms)
+Completed 200 OK in 60ms (Views: 59.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:36 -0400
+Processing by ToDosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"Save", "priority"=>"2"}, "commit"=>"Create To do"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "to_dos" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 05 Apr 2014 03:27:36 UTC +00:00], ["name", "Save"], ["priority", 2], ["updated_at", Sat, 05 Apr 2014 03:27:36 UTC +00:00]]
+  [1m[35m (9.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 14ms (ActiveRecord: 9.6ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:36 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:46 -0400
+Processing by ToDosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"Why", "priority"=>"1"}, "commit"=>"Create To do"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "to_dos" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 05 Apr 2014 03:27:46 UTC +00:00], ["name", "Why"], ["priority", 1], ["updated_at", Sat, 05 Apr 2014 03:27:46 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:46 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:27:51 -0400
+Processing by ToDosController#index as HTML
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos"
+  Rendered to_dos/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:29:45 -0400
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:43:12 -0400
+Processing by ToDosController#index as HTML
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos"
+  Rendered to_dos/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-04 23:43:12 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:43:13 -0400
+
+
+Started GET "/to_dos/4" for 127.0.0.1 at 2014-04-04 23:43:18 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered to_dos/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/5" for 127.0.0.1 at 2014-04-04 23:43:27 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "5"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/6" for 127.0.0.1 at 2014-04-04 23:43:30 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/4" for 127.0.0.1 at 2014-04-04 23:43:33 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/5" for 127.0.0.1 at 2014-04-04 23:43:36 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/6" for 127.0.0.1 at 2014-04-04 23:43:38 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/6" for 127.0.0.1 at 2014-04-04 23:43:43 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/5" for 127.0.0.1 at 2014-04-04 23:44:31 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "5"]]
+  Rendered to_dos/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/5" for 127.0.0.1 at 2014-04-04 23:45:05 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  Rendered to_dos/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/to_dos/6" for 127.0.0.1 at 2014-04-04 23:45:13 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/5" for 127.0.0.1 at 2014-04-04 23:45:18 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/6" for 127.0.0.1 at 2014-04-04 23:45:24 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/4" for 127.0.0.1 at 2014-04-04 23:45:37 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos/6" for 127.0.0.1 at 2014-04-04 23:51:58 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered to_dos/show.html.erb within layouts/application (25.0ms)
+Completed 500 Internal Server Error in 31ms
+
+ActionView::Template::Error (undefined local variable or method `to_do' for #<#<Class:0x007ff3cbca1068>:0x007ff3cba4dd48>):
+    15: 
+    16: <div data-role="footer">
+    17:   <%= link_to 'Back', to_dos_path %>
+    18:   <%= link_to 'Complete', to_do, method: :delete, data: { confirm: 'Is the quest...truly complete?' } %>
+    19: 	<%= link_to 'Edit', edit_to_do_path(@to_do) %>
+    20: </div>
+  app/views/to_dos/show.html.erb:18:in `_app_views_to_dos_show_html_erb__1845328542369225066_70342535247360'
+
+
+  Rendered /Users/markbrown/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/markbrown/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/markbrown/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.1ms)
+
+
+Started GET "/to_dos/5" for 127.0.0.1 at 2014-04-04 23:52:01 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  Rendered to_dos/show.html.erb within layouts/application (12.7ms)
+Completed 500 Internal Server Error in 18ms
+
+ActionView::Template::Error (undefined local variable or method `to_do' for #<#<Class:0x007ff3cbca1068>:0x007ff3cd4ffd30>):
+    15: 
+    16: <div data-role="footer">
+    17:   <%= link_to 'Back', to_dos_path %>
+    18:   <%= link_to 'Complete', to_do, method: :delete, data: { confirm: 'Is the quest...truly complete?' } %>
+    19: 	<%= link_to 'Edit', edit_to_do_path(@to_do) %>
+    20: </div>
+  app/views/to_dos/show.html.erb:18:in `_app_views_to_dos_show_html_erb__1845328542369225066_70342535247360'
+
+
+  Rendered /Users/markbrown/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/markbrown/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/markbrown/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+
+
+Started GET "/to_dos/6" for 127.0.0.1 at 2014-04-04 23:52:17 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered to_dos/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:52:52 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-04 23:52:53 -0400
+
+
+Started GET "/to_dos/new" for 127.0.0.1 at 2014-04-04 23:53:03 -0400
+Processing by ToDosController#new as HTML
+  Rendered to_dos/_form.html.erb (2.0ms)
+  Rendered to_dos/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/to_dos" for 127.0.0.1 at 2014-04-04 23:55:23 -0400
+Processing by ToDosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "to_do"=>{"name"=>"lkjlkj;lkj", "priority"=>"2"}, "commit"=>"Create To do"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "to_dos" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 05 Apr 2014 03:55:23 UTC +00:00], ["name", "lkjlkj;lkj"], ["priority", 2], ["updated_at", Sat, 05 Apr 2014 03:55:23 UTC +00:00]]
+  [1m[35m (8.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 12ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:55:23 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/to_dos/7" for 127.0.0.1 at 2014-04-04 23:55:25 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "7"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/to_dos/7" for 127.0.0.1 at 2014-04-04 23:55:28 -0400
+Processing by ToDosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "id"=>"7"}
+  [1m[36mToDo Load (0.1ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "7"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "to_dos" WHERE "to_dos"."id" = ?[0m  [["id", 7]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 3ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:55:28 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/to_dos/4" for 127.0.0.1 at 2014-04-04 23:55:29 -0400
+Processing by ToDosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mToDo Load (0.1ms)[0m  SELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered to_dos/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/to_dos/4" for 127.0.0.1 at 2014-04-04 23:55:32 -0400
+Processing by ToDosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "id"=>"4"}
+  [1m[36mToDo Load (0.2ms)[0m  [1mSELECT "to_dos".* FROM "to_dos" WHERE "to_dos"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "to_dos" WHERE "to_dos"."id" = ?[0m  [["id", 4]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/to_dos
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/to_dos" for 127.0.0.1 at 2014-04-04 23:55:32 -0400
+Processing by ToDosController#index as HTML
+  [1m[36mToDo Load (0.3ms)[0m  [1mSELECT "to_dos".* FROM "to_dos"[0m
+  Rendered to_dos/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.3ms)

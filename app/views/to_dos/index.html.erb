@@ -7,11 +7,10 @@
   <ul data-role="listview">
     <% @to_dos.each do |to_do| %>
       <li>
-        <h2><%= to_do.name %></h2>
-        <h2>Priority: <%= to_do.priority %></h2>
-        <%= link_to 'Edit', edit_to_do_path(to_do) %>
-        <br>
-        <button class="ui-btn ui-btn-inline"><%= link_to 'Complete', to_do, method: :delete, data: { confirm: 'Is the quest...truly complete?' } %></button>
+        <%= link_to to_do do %>
+          <h1><%= to_do.name %></h1>
+          <h1>Priority:  <%= to_do.priority %></h1>
+        <% end %>
       </li>
     <% end %>
   </ul>

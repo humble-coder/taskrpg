@@ -56,7 +56,7 @@ class ToDosController < ApplicationController
   def destroy
     @to_do.destroy
     respond_to do |format|
-      format.html { redirect_to to_dos_url }
+      format.html { redirect_to to_dos_path, notice: 'To-Do was successfully completed.' }
       format.json { head :no_content }
     end
   end
