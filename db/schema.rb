@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403193041) do
+ActiveRecord::Schema.define(version: 20140405175519) do
 
-  create_table "to_dos", force: true do |t|
+  create_table "tasks", force: true do |t|
     t.text     "name"
     t.integer  "priority"
     t.datetime "created_at"

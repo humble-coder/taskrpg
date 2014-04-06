@@ -1,0 +1,19 @@
+<div data-role="header">
+  <h1><%= @task.name %></h1>
+</div>
+
+<div data-role="content">
+  
+  <p>
+    <h1><%= @task.name %></h1>
+    Priority:
+    <%= @task.priority %>
+  </p>
+
+</div>
+
+<div data-role="footer">
+  <%= link_to 'Back', tasks_path %>
+  <%= link_to 'Complete', @task, method: :delete, data: { confirm: 'Is the task...truly complete?' } %>
+	<%= link_to 'Edit', edit_task_path(@task) %>
+</div>

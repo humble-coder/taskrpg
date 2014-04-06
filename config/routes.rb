@@ -1,6 +1,8 @@
 Taskrpg::Application.routes.draw do
 
-  resources :to_dos
+  resources :tasks
+
+  root 'tasks#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

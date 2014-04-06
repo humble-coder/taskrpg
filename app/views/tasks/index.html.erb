@@ -1,0 +1,22 @@
+<div data-role="header">
+  <h1>Your Tasks for the Day</h1>
+</div>
+
+
+<div data-role="content">
+  <ul data-role="listview">
+    <% @tasks.each do |task| %>
+      <li>
+        <%= link_to task do %>
+          <h1><%= task.name %></h1>
+          <h1>Priority:  <%= task.priority %></h1>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<div data-role="footer">
+  <%= link_to 'New Task', new_task_path %>
+</div>

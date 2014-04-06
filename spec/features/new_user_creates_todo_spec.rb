@@ -7,12 +7,12 @@ feature 'User creates a todo' do
   end
 
 	scenario 'successfully' do
-		click_link 'New To-Do'
+		click_link 'New Task'
 
-		fill_in 'Content', with: 'My To-Do'
+		fill_in 'Name', with: 'My To-Do'
 		page.select '1', :from => 'Priority'
-		click_button('Save To-Do')
+		click_button('Create Task')
 
-		expect(page).to have_content('My To-Do 1')
+		expect(page).to have_content('My To-Do Priority: 1')
 	end
 end
