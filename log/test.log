@@ -5079,3 +5079,291 @@ Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms)
   [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
   [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
   [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  Rendered tasks/_form.html.erb (55.4ms)
+  Rendered tasks/new.html.erb (65.6ms)
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (7.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+Started GET "/tasks" for 127.0.0.1 at 2014-04-06 12:14:44 -0400
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+Completed 200 OK in 89ms (Views: 62.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (8.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+Processing by TasksController#new as HTML
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by TasksController#update as HTML
+  Parameters: {"task"=>{"name"=>"invalid value"}, "id"=>"1"}
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.3ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (7.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by TasksController#update as HTML
+  Parameters: {"task"=>{"name"=>"invalid value"}, "id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by TasksController#update as HTML
+  Parameters: {"task"=>{"name"=>"MyText"}, "id"=>"1"}
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by TasksController#update as HTML
+  Parameters: {"task"=>{"name"=>"MyText", "priority"=>"1"}, "id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tasks
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by TasksController#update as HTML
+  Parameters: {"task"=>{"name"=>"MyText", "priority"=>"1"}, "id"=>"1"}
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/tasks
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"name"=>"invalid value"}}
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"name"=>"invalid value"}}
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tasks"
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"name"=>"MyText", "priority"=>"1"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tasks
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tasks"
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"name"=>"MyText", "priority"=>"1"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/tasks
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"name"=>"MyText", "priority"=>"1"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/tasks
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by TasksController#index as HTML
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by TasksController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "tasks" WHERE "tasks"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tasks
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tasks"
+Processing by TasksController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/tasks
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "tasks"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00], ["name", "MyText"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:44 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  Rendered tasks/_form.html.erb (3.4ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-06 12:14:45 -0400
+Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-06 12:14:45 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (2.6ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+Started POST "/tasks" for 127.0.0.1 at 2014-04-06 12:14:45 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "task"=>{"name"=>"My To-Do", "priority"=>"1"}, "commit"=>"Create Task"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:14:45 UTC +00:00], ["name", "My To-Do"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:14:45 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/tasks
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/tasks" for 127.0.0.1 at 2014-04-06 12:14:45 -0400
+Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction

@@ -3340,3 +3340,92 @@ Processing by TasksController#new as HTML
   Rendered tasks/_form.html.erb (16.0ms)
   Rendered tasks/new.html.erb within layouts/application (22.2ms)
 Completed 200 OK in 32ms (Views: 30.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered tasks/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 143ms (Views: 123.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/to_dos.css?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-06 12:02:06 -0400
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-06 12:02:08 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (13.8ms)
+  Rendered tasks/new.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2014-04-06 12:03:29 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "task"=>{"name"=>"Task 1", "priority"=>"1"}, "commit"=>"Create Task"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:03:29 UTC +00:00], ["name", "Task 1"], ["priority", 1], ["updated_at", Sun, 06 Apr 2014 16:03:29 UTC +00:00]]
+  [1m[36m (8.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 60ms (ActiveRecord: 12.4ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-06 12:03:29 -0400
+Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered tasks/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-06 12:03:31 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (2.3ms)
+  Rendered tasks/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2014-04-06 12:03:38 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "task"=>{"name"=>"Task 2", "priority"=>"2"}, "commit"=>"Create Task"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Sun, 06 Apr 2014 16:03:38 UTC +00:00], ["name", "Task 2"], ["priority", 2], ["updated_at", Sun, 06 Apr 2014 16:03:38 UTC +00:00]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 12ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-06 12:03:38 -0400
+Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered tasks/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.2ms)
