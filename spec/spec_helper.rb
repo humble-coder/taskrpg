@@ -45,7 +45,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include FactoryGirl::Syntax::Methods
-  #config.include Warden::Test::Helpers
 
 
   config.before(:suite) do
@@ -54,11 +53,9 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
-    #Warden.test_mode!
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
-    #Warden.test_reset!
   end
 end

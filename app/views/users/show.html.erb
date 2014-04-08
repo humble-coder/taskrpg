@@ -1,0 +1,15 @@
+<div data-role="header">
+  <h1><%= @user.name %>'s Profile</h1>
+</div>
+
+<div data-role="content">
+  
+  <p>
+    name: <%= @user.name %>
+  </p>
+
+</div>
+
+<div data-role="footer">
+  <%= link_to 'Your Tasks', tasks_path %>
+</div>
