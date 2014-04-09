@@ -1,28 +1,32 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe "tasks/index" do
-  before(:each) do
-    assign(:tasks, [
-      stub_model(Task,
-        :name => "MyText",
-        :priority => 1
-      ),
-      stub_model(Task,
-        :name => "MyText",
-        :priority => 2
-      )
-    ])
-  end
+# describe "tasks/index" do
+#   let(:user) { create(:user) }
 
-  it "renders a list of tasks" do
-    render
+#   before(:each) do
+#     assign(:tasks, [
+#       stub_model(Task,
+#         :name => "My Task",
+#         :priority => 1,
+#         :user => user
+#       ),
+#       stub_model(Task,
+#         :name => "Another Task",
+#         :priority => 2,
+#         :user => user
+#       )
+#     ])
+#   end
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "ul" do |elements|
-      elements.each do |element|
-        assert_select element, "li", 2
-      end
-    end
+#   it "renders a list of tasks" do
+#     render
+
+#     # Run the generator again with the --webrat flag if you want to use webrat matchers
+#     assert_select "ul" do |elements|
+#       elements.each do |element|
+#         assert_select element, "li", 2
+#       end
+#     end
     
-  end
-end
+#   end
+# end

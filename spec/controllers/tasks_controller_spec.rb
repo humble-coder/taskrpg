@@ -23,17 +23,19 @@ describe TasksController do
   # This should return the minimal set of attributes required to create a valid
   # Task. As you add validations to Task, be sure to
   # adjust the attributes here as well.
+  let(:current_user) { controller.stub(:current_user).and_return(create :user) }
   let(:valid_attributes) { { "name" => "MyText", "priority" => 1 } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # TasksController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { controller.stub(:require_login).and_return(true) }
 
   describe "GET index" do
-    it "assigns all tasks as @tasks" do
+    it "assigns user's tasks as @tasks" do
       task = Task.create! valid_attributes
-      get :index, {}, valid_session
+      task.user = current_user
+      get :index, {}, valid_session, current_user
       assigns(:tasks).should eq([task])
     end
   end

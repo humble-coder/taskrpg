@@ -5334,3 +5334,199 @@ Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.3ms)
   [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
   [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [1m[35m (1.1ms)[0m  CREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.8ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140408180839')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403173614')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140403181659')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403193041')
+  [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140405175519')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406164820')
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406172320')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406174713')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-09 13:04:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (8.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'c8e0212e3305594c2e9dfd9a78db3a2e2744f074' LIMIT 1
+Completed 200 OK in 2948ms (Views: 2929.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-09 13:04:03 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-09 13:04:09 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (11.2ms)
+  Rendered users/new.html.erb within layouts/application (59.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'c8e0212e3305594c2e9dfd9a78db3a2e2744f074' LIMIT 1[0m
+Completed 200 OK in 71ms (Views: 68.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [1m[35m (0.9ms)[0m  CREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140408180839')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403173614')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140403181659')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403193041')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140405175519')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406164820')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406172320')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406174713')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (11.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'c8e0212e3305594c2e9dfd9a78db3a2e2744f074' LIMIT 1
+Completed 200 OK in 297ms (Views: 273.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-09 16:14:31 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-09 16:14:32 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-09 16:14:36 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (13.4ms)
+  Rendered users/new.html.erb within layouts/application (22.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'c8e0212e3305594c2e9dfd9a78db3a2e2744f074' LIMIT 1[0m
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-04-09 16:14:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "user"=>{"name"=>"Mark", "email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('mark.philosophe@gmail.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (4.6ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Apr 2014 20:14:46 UTC +00:00], ["email", "mark.philosophe@gmail.com"], ["name", "Mark"], ["password_digest", "$2a$10$0EeMh4t/ruBCSCQLHUyUuenMJRVbELJpW5F80KathEWdkqm4HuEPO"], ["remember_token", "6dcafa26616ba79f81f747ea2d8e2e2eea4d9eda"], ["updated_at", Wed, 09 Apr 2014 20:14:46 UTC +00:00]]
+  [1m[36m (8.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "062c502cf9697bcb333bf7f1dab24c1e9f78c7f1"], ["updated_at", Wed, 09 Apr 2014 20:14:46 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 119ms (ActiveRecord: 15.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-09 16:14:46 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '062c502cf9697bcb333bf7f1dab24c1e9f78c7f1' LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?  [["user_id", 1]]
+  Rendered tasks/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 26ms (Views: 10.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-09 16:14:49 -0400
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '062c502cf9697bcb333bf7f1dab24c1e9f78c7f1' LIMIT 1[0m
+  Rendered tasks/_form.html.erb (53.3ms)
+  Rendered tasks/new.html.erb within layouts/application (57.4ms)
+Completed 200 OK in 69ms (Views: 66.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-09 16:15:00 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '062c502cf9697bcb333bf7f1dab24c1e9f78c7f1' LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (9.3ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [1m[35m (1.4ms)[0m  CREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.2ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140408180839')[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403173614')
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140403181659')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403193041')
+  [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140405175519')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406164820')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406172320')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406174713')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m

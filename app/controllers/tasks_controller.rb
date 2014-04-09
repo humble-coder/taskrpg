@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :require_login
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
@@ -71,5 +72,12 @@ class TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:name, :priority)
+    end
+
+    def require_login
+      if !signed_in?
+        flash[:error] = "You must be logged in to view your tasks."
+        redirect_to signin_path
+      end
     end
 end

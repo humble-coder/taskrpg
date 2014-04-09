@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to user_path(@user), notice: "You have successfully registered for Task RPG!" }
+        format.html { redirect_to tasks_path, notice: "You have successfully registered for Task RPG!" }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
