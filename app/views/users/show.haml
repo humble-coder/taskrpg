@@ -1,0 +1,9 @@
+%div{"data-role" => "header"}
+  %h1
+    = @user.name
+    's Profile
+%div{"data-role" => "content"}
+  %p
+    name: #{@user.name}
+%div{"data-role" => "footer"}
+  = link_to 'Your Tasks', tasks_path

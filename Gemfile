@@ -42,6 +42,8 @@ group :development, :test do
 end
 
 gem 'jquery_mobile_rails'
+gem 'haml'
+gem "haml-rails"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'

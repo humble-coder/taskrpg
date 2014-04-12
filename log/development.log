@@ -7233,3 +7233,156 @@ Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.4ms)
   [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
   [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-12 00:40:21 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (17.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ed775c22545573ab86c124776e74ebcb2d45ba6d' LIMIT 1
+Completed 200 OK in 1552ms (Views: 1532.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-12 00:40:23 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-12 00:40:24 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-12 00:40:31 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (19.5ms)
+  Rendered users/new.html.erb within layouts/application (28.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ed775c22545573ab86c124776e74ebcb2d45ba6d' LIMIT 1[0m
+Completed 200 OK in 41ms (Views: 38.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (10.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ed775c22545573ab86c124776e74ebcb2d45ba6d' LIMIT 1
+Completed 200 OK in 221ms (Views: 203.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-12 00:50:35 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-12 00:50:38 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (9.7ms)
+  Rendered users/new.html.erb within layouts/application (15.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ed775c22545573ab86c124776e74ebcb2d45ba6d' LIMIT 1[0m
+Completed 200 OK in 25ms (Views: 23.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2014-04-12 00:50:39 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (3.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ed775c22545573ab86c124776e74ebcb2d45ba6d' LIMIT 1
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2014-04-12 00:53:58 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (41.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ed775c22545573ab86c124776e74ebcb2d45ba6d' LIMIT 1[0m
+Completed 200 OK in 47ms (Views: 46.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-12 00:53:59 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-12 00:54:03 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (5.1ms)
+  Rendered users/new.haml within layouts/application (10.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ed775c22545573ab86c124776e74ebcb2d45ba6d' LIMIT 1
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.2ms)
