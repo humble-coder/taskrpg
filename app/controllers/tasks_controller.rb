@@ -55,7 +55,6 @@ class TasksController < ApplicationController
   def complete
     @task = Task.find(params[:id])
     @task.update(complete: true)
-    render :refresh
   end
 
   # DELETE /tasks/1

@@ -8903,3 +8903,801 @@ Completed 200 OK in 19ms (Views: 14.8ms | ActiveRecord: 0.5ms)
   [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
   [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140408180839')[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-13 18:55:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (17.3ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'a230e2ce8aab0e0115ec307f45ca10e6cfca92a2' LIMIT 1
+Completed 200 OK in 3200ms (Views: 3178.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 18:55:04 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 18:55:06 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (21.1ms)
+  Rendered users/new.haml within layouts/application (34.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'a230e2ce8aab0e0115ec307f45ca10e6cfca92a2' LIMIT 1[0m
+Completed 200 OK in 49ms (Views: 47.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-04-13 18:55:16 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "user"=>{"name"=>"Mark", "email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('mark.philosophe@gmail.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (50.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 22:55:16 UTC +00:00], ["email", "mark.philosophe@gmail.com"], ["name", "Mark"], ["password_digest", "$2a$10$nBCKlvcpfncQO6dSuiuwnuhYDLfpnanmGvDtroYc5t.OijZvSb2.q"], ["remember_token", "e2f6f2f0d9383e089488997386b9f06c9e1b1dbc"], ["updated_at", Sun, 13 Apr 2014 22:55:16 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "9df8b035e331e556cd17dd69a21b3663a8afae01"], ["updated_at", Sun, 13 Apr 2014 22:55:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 177ms (ActiveRecord: 54.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 18:55:16 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.6ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (8.8ms)
+Completed 200 OK in 62ms (Views: 20.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)[0m
+  Rendered users/show.haml within layouts/application (3.2ms)
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 18:56:07 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)[0m
+  Rendered users/show.haml within layouts/application (4.6ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 18:58:01 -0400
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-13 18:58:15 -0400
+Processing by TasksController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  Rendered tasks/_form.haml (69.3ms)
+  Rendered tasks/new.haml within layouts/application (75.7ms)
+Completed 200 OK in 97ms (Views: 94.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2014-04-13 18:58:19 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "task"=>{"name"=>"Blah blah ", "priority"=>"1"}, "commit"=>"Create Task"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 22:58:19 UTC +00:00], ["name", "Blah blah "], ["priority", 1], ["updated_at", Sun, 13 Apr 2014 22:58:19 UTC +00:00], ["user_id", 1]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 20ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 18:58:19 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)[0m
+  Rendered users/show.haml within layouts/application (3.4ms)
+Completed 200 OK in 20ms (Views: 14.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (3.5ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 18:59:17 -0400
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (1.6ms)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 18:59:31 -0400
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (1.7ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:05 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 19:00:06 -0400
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (1.7ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 19:00:08 -0400
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (1.9ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 19:00:55 -0400
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2014-04-13 19:01:02 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '9df8b035e331e556cd17dd69a21b3663a8afae01' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["remember_token", "592d07c7344f7398981c6b8634b531598d99e8f5"], ["updated_at", Sun, 13 Apr 2014 23:01:02 UTC +00:00]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:01:02 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (3.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer, "complete" boolean DEFAULT 'f') [0m
+  [1m[35m (0.9ms)[0m  CREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.2ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140412155014')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403173614')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140403181659')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403193041')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140405175519')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406164820')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406172320')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406174713')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140408180839')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (10.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 210ms (Views: 192.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 19:02:02 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:02:55 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (13.2ms)
+  Rendered users/new.haml within layouts/application (20.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 34ms (Views: 32.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:03:04 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "user"=>{"name"=>"Mark", "email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('mark.philosophe@gmail.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (3.8ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:03:05 UTC +00:00], ["email", "mark.philosophe@gmail.com"], ["name", "Mark"], ["password_digest", "$2a$10$4/smLFIKMFST6Ij9N7YLVugTdmex5cAZxL8HkWxtKxWLhGo8a8gVK"], ["remember_token", "1e1ecef38cc7ea4117eb11c1e2828fe1f4bcd3b4"], ["updated_at", Sun, 13 Apr 2014 23:03:05 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "8dc95a2c12bdc0e84afee0b98d43e3382440f0f9"], ["updated_at", Sun, 13 Apr 2014 23:03:05 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 167ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:03:05 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '8dc95a2c12bdc0e84afee0b98d43e3382440f0f9' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (8.1ms)
+Completed 200 OK in 46ms (Views: 16.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-13 19:03:22 -0400
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '8dc95a2c12bdc0e84afee0b98d43e3382440f0f9' LIMIT 1[0m
+  Rendered tasks/_form.haml (10.4ms)
+  Rendered tasks/new.haml within layouts/application (15.7ms)
+Completed 200 OK in 26ms (Views: 23.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2014-04-13 19:03:31 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "task"=>{"name"=>"Woohoo", "priority"=>"2"}, "commit"=>"Create Task"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '8dc95a2c12bdc0e84afee0b98d43e3382440f0f9' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Sun, 13 Apr 2014 23:03:31 UTC +00:00], ["name", "Woohoo"], ["priority", 2], ["updated_at", Sun, 13 Apr 2014 23:03:31 UTC +00:00], ["user_id", 1]]
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 20ms (ActiveRecord: 10.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:03:31 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '8dc95a2c12bdc0e84afee0b98d43e3382440f0f9' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (1.1ms)
+Completed 200 OK in 12ms (Views: 8.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:12:21 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '8dc95a2c12bdc0e84afee0b98d43e3382440f0f9' LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (9.5ms)
+Completed 200 OK in 32ms (Views: 14.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 19:12:22 -0400
+  [1m[36m (9.4ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer, "complete" boolean DEFAULT 'f') [0m
+  [1m[35m (1.3ms)[0m  CREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.2ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140412155014')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403173614')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140403181659')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403193041')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140405175519')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406164820')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406172320')[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406174713')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140408180839')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (10.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '8dc95a2c12bdc0e84afee0b98d43e3382440f0f9' LIMIT 1
+Completed 200 OK in 221ms (Views: 202.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 19:13:18 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 19:13:19 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 19:13:19 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:13:25 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (12.1ms)
+  Rendered users/new.haml within layouts/application (19.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '8dc95a2c12bdc0e84afee0b98d43e3382440f0f9' LIMIT 1[0m
+Completed 200 OK in 30ms (Views: 28.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:13:36 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "user"=>{"name"=>"Mark", "email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('mark.philosophe@gmail.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (2.9ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:13:36 UTC +00:00], ["email", "mark.philosophe@gmail.com"], ["name", "Mark"], ["password_digest", "$2a$10$SouVq5WDpaK.Y404NwHJ0uYWyk4RhZXIIbPZD5OuGbkiVtiIPGD5."], ["remember_token", "6faf313d7587d2fc1b4502e5c6d9cdb37cf6aa65"], ["updated_at", Sun, 13 Apr 2014 23:13:36 UTC +00:00]]
+  [1m[36m (8.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "b23c70a1f587885e8db58f71cbbd25203cb37d54"], ["updated_at", Sun, 13 Apr 2014 23:13:36 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 158ms (ActiveRecord: 13.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:13:36 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'b23c70a1f587885e8db58f71cbbd25203cb37d54' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (8.5ms)
+Completed 200 OK in 44ms (Views: 16.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-13 19:13:44 -0400
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'b23c70a1f587885e8db58f71cbbd25203cb37d54' LIMIT 1[0m
+  Rendered tasks/_form.haml (10.6ms)
+  Rendered tasks/new.haml within layouts/application (16.1ms)
+Completed 200 OK in 27ms (Views: 24.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2014-04-13 19:13:47 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xt5t8MJ85Gu4tIHt0PDKLFXaX5SSAKqaewkFAAQV5cM=", "task"=>{"name"=>"blkjadf", "priority"=>"1"}, "commit"=>"Create Task"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'b23c70a1f587885e8db58f71cbbd25203cb37d54' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tasks" ("created_at", "name", "priority", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Sun, 13 Apr 2014 23:13:47 UTC +00:00], ["name", "blkjadf"], ["priority", 1], ["updated_at", Sun, 13 Apr 2014 23:13:47 UTC +00:00], ["user_id", 1]]
+  [1m[35m (9.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 19ms (ActiveRecord: 10.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:13:47 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'b23c70a1f587885e8db58f71cbbd25203cb37d54' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (1.6ms)
+Completed 200 OK in 13ms (Views: 9.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:17:30 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'b23c70a1f587885e8db58f71cbbd25203cb37d54' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (1.5ms)
+Completed 200 OK in 13ms (Views: 8.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'b23c70a1f587885e8db58f71cbbd25203cb37d54' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (4.2ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-04-13 19:19:31 -0400
+  [1m[36m (9.1ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer, "complete" boolean DEFAULT 'f') [0m
+  [1m[35m (0.9ms)[0m  CREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.8ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140412155014')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403173614')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140403181659')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140403193041')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140405175519')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406164820')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406172320')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140406174713')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140406221102')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407233029')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140408180839')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

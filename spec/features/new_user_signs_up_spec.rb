@@ -14,7 +14,8 @@ feature 'User signs up' do
 		fill_in 'Password confirmation', with: 'Password'
 		click_button('Sign Up')
 
-		expect(page).to have_content("New User's Tasks")
+		expect(page).to have_content("Your Stats")
+		expect(page).to have_content("Your Tasks")
 	end
 
 	scenario 'with blank name' do

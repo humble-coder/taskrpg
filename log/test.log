@@ -39402,3 +39402,736 @@ Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms)
   [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
   [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
   [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36m (9.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateToDos (20140403173614)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "to_dos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140403173614"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddCompleteToToDo (20140403181659)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "to_dos" ADD "complete" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140403181659"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveCompleteFromToDo (20140403193041)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TEMPORARY TABLE "ato_dos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime, "complete" boolean DEFAULT 'f') [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "to_dos"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "to_dos"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "to_dos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "priority" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "ato_dos"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "ato_dos"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140403193041"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to RenameToDos (20140405175519)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "to_dos" RENAME TO "tasks"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140405175519"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateUsers (20140406164820)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140406164820"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddIndexToUsersEmail (20140406172320)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140406172320"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to AddPasswordDigestToUsers (20140406174713)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "password_digest" varchar(255)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140406174713"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to AddUserIdToTask (20140406221102)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "tasks" ADD "user_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140406221102"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddRememberTokenToUsers (20140407233029)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "remember_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140407233029"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddUserIndexToTasks (20140408180839)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140408180839"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddCompleteToTask (20140412155014)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "tasks" ADD "complete" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140412155014"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user1@example.com') LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 13 Apr 2014 23:21:45 UTC +00:00], ["email", "user1@example.com"], ["name", "User"], ["password_digest", "$2a$04$I8zrz1mLrCFP.qcpQLbsFeB1f.vOwggCLRx24tZvXA0eOe4C5C8au"], ["remember_token", "800092388edc1019b11358f55fc9c46fdbdd50db"], ["updated_at", Sun, 13 Apr 2014 23:21:45 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:45 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (8.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 7773ms (Views: 7756.1ms | ActiveRecord: 0.2ms)
+Started POST "/sessions" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["remember_token", "87d8011a06b6db2252572828e9e222aa468d78cb"], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/tasks
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms)
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '87d8011a06b6db2252572828e9e222aa468d78cb' LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (3.3ms)
+Completed 200 OK in 23ms (Views: 7.7ms | ActiveRecord: 0.4ms)
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by TasksController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '87d8011a06b6db2252572828e9e222aa468d78cb' LIMIT 1
+  Rendered tasks/_form.haml (10.4ms)
+  Rendered tasks/new.haml within layouts/application (14.7ms)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 0.3ms)
+Started POST "/tasks" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "task"=>{"name"=>"My Task", "priority"=>"1"}, "commit"=>"Create Task"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '87d8011a06b6db2252572828e9e222aa468d78cb' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00], ["name", "My Task"], ["priority", 1], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '87d8011a06b6db2252572828e9e222aa468d78cb' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)[0m
+  Rendered users/show.haml within layouts/application (3.6ms)
+Completed 200 OK in 59ms (Views: 6.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.0ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (8.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user2@example.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00], ["email", "user2@example.com"], ["name", "User"], ["password_digest", "$2a$04$t4zeY7wrR6OWALEJhxw/kuT0iQAAn77AJrtlhvRmMiNsnhtxmwJ.u"], ["remember_token", "ee81d2df117570cdb3641c7d62df7690fcb647a5"], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+Started POST "/sessions" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"email"=>"user2@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'user2@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "f24c930eedd6ee2fbaf3418247c903c52592acd3"], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/tasks
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'f24c930eedd6ee2fbaf3418247c903c52592acd3' LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'f24c930eedd6ee2fbaf3418247c903c52592acd3' LIMIT 1[0m
+  Rendered tasks/_form.haml (3.4ms)
+  Rendered tasks/new.haml within layouts/application (4.0ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.1ms)
+Started POST "/tasks" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "task"=>{"name"=>"", "priority"=>"2"}, "commit"=>"Create Task"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'f24c930eedd6ee2fbaf3418247c903c52592acd3' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered tasks/_form.haml (2.7ms)
+  Rendered tasks/new.haml within layouts/application (3.1ms)
+Completed 200 OK in 9ms (Views: 4.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (8.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (5.6ms)
+  Rendered users/new.haml within layouts/application (7.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.0ms)
+  Rendered users/new.haml within layouts/application (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.7ms)
+  Rendered users/new.haml within layouts/application (3.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.8ms)
+  Rendered users/new.haml within layouts/application (4.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 5.9ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.4ms)
+  Rendered users/new.haml within layouts/application (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.0ms)
+  Rendered users/new.haml within layouts/application (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.4ms)
+  Rendered users/new.haml within layouts/application (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.3ms)
+  Rendered users/new.haml within layouts/application (3.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (2.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.5ms)
+  Rendered users/new.haml within layouts/application (2.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.4ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.1ms)
+  Rendered users/new.haml within layouts/application (3.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 52ms (Views: 51.0ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.6ms)
+  Rendered users/new.haml within layouts/application (3.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00], ["email", "email@example.com"], ["name", "New User"], ["password_digest", "$2a$04$yVCDh14TimuZC4WwUUJB7.tpGGo0q9V4RVJ0tRpMyo71KfG7n/H3."], ["remember_token", "23f1bf54c74a4083318f445dd27d7f5a395e7afe"], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "2ea6d93b267fac878b11f4438d55f721207d98f9"], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '2ea6d93b267fac878b11f4438d55f721207d98f9' LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (0.9ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user3@example.com') LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00], ["email", "user3@example.com"], ["name", "User"], ["password_digest", "$2a$04$6kLbHjgpGWrimAI.FGB6euuzFlpP1SfKpFnwj5CscoRprgE//U4AS"], ["remember_token", "27967567ad3f579f88ec375ce3dc18f312b3128e"], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00], ["name", "Some Task"], ["priority", 1], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+Started POST "/sessions" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"email"=>"user3@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'user3@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "695659b5eb00a8658880b24d71cfcb8f62df303d"], ["updated_at", Sun, 13 Apr 2014 23:21:53 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/tasks
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:21:53 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '695659b5eb00a8658880b24d71cfcb8f62df303d' LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user1@example.com') LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 13 Apr 2014 23:22:45 UTC +00:00], ["email", "user1@example.com"], ["name", "User"], ["password_digest", "$2a$04$n/ETa.253lVtkGUjTmWPJ.0z2lEJW.IEDnwZ2WmXO/LjR6Zx7dCIS"], ["remember_token", "5411f12f5d549442ce18438529e97227d49e1dd4"], ["updated_at", Sun, 13 Apr 2014 23:22:45 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:45 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (8.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 99ms (Views: 78.0ms | ActiveRecord: 0.2ms)
+Started POST "/sessions" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["remember_token", "1971fab29a17df09a6689d71ee2ff07a295854e0"], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/tasks
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '1971fab29a17df09a6689d71ee2ff07a295854e0' LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (3.0ms)
+Completed 200 OK in 61ms (Views: 5.9ms | ActiveRecord: 0.4ms)
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by TasksController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '1971fab29a17df09a6689d71ee2ff07a295854e0' LIMIT 1
+  Rendered tasks/_form.haml (10.2ms)
+  Rendered tasks/new.haml within layouts/application (13.8ms)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.2ms)
+Started POST "/tasks" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "task"=>{"name"=>"My Task", "priority"=>"1"}, "commit"=>"Create Task"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '1971fab29a17df09a6689d71ee2ff07a295854e0' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00], ["name", "My Task"], ["priority", 1], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '1971fab29a17df09a6689d71ee2ff07a295854e0' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)[0m
+  Rendered users/show.haml within layouts/application (3.6ms)
+Completed 200 OK in 13ms (Views: 6.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.0ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (8.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user2@example.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00], ["email", "user2@example.com"], ["name", "User"], ["password_digest", "$2a$04$YWdA2UUEoNhjUqi0Bp8k4.nKBqHluKbH6/O/y0gZKVaVkHYbgNI6a"], ["remember_token", "8ff0ec117bf70a6d40848cbf5925cbd5bfe0b32a"], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+Started POST "/sessions" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"email"=>"user2@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'user2@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "372ab89bb969cd2b8b6b24eea346db91bb5ffc02"], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/tasks
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '372ab89bb969cd2b8b6b24eea346db91bb5ffc02' LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+Started GET "/tasks/new" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '372ab89bb969cd2b8b6b24eea346db91bb5ffc02' LIMIT 1[0m
+  Rendered tasks/_form.haml (2.2ms)
+  Rendered tasks/new.haml within layouts/application (2.6ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.1ms)
+Started POST "/tasks" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "task"=>{"name"=>"", "priority"=>"2"}, "commit"=>"Create Task"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '372ab89bb969cd2b8b6b24eea346db91bb5ffc02' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered tasks/_form.haml (2.6ms)
+  Rendered tasks/new.haml within layouts/application (3.0ms)
+Completed 200 OK in 9ms (Views: 4.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (8.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (2.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (51.7ms)
+  Rendered users/new.haml within layouts/application (54.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 57ms (Views: 56.5ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.9ms)
+  Rendered users/new.haml within layouts/application (4.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (8.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (2.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.4ms)
+  Rendered users/new.haml within layouts/application (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.4ms)
+  Rendered users/new.haml within layouts/application (3.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (8.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (2.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.4ms)
+  Rendered users/new.haml within layouts/application (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.9ms)
+  Rendered users/new.haml within layouts/application (4.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 13ms (Views: 6.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (3.1ms)
+  Rendered users/new.haml within layouts/application (3.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (3.0ms)
+  Rendered users/new.haml within layouts/application (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.7ms)
+  Rendered users/new.haml within layouts/application (3.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form.haml (4.2ms)
+  Rendered users/new.haml within layouts/application (4.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  DELETE FROM "tasks";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'tasks';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+Started GET "/signup" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (2.3ms)
+  Rendered users/new.haml within layouts/application (2.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms)
+Started POST "/users" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"New User", "email"=>"email@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('email@example.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00], ["email", "email@example.com"], ["name", "New User"], ["password_digest", "$2a$04$OITOj1Bm.PY6mffj1f0zhefLqUC4gnnuLkiajFIfZPrIGF3rfyol2"], ["remember_token", "096b89ddd4bb14548031fae14b39fd4d97c1f2f7"], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "13cde87735cb46b014c78399758786a84ea15932"], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 6ms (ActiveRecord: 0.9ms)
+Started GET "/users/1" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '13cde87735cb46b014c78399758786a84ea15932' LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1)
+  Rendered users/show.haml within layouts/application (0.9ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (7.8ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user3@example.com') LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00], ["email", "user3@example.com"], ["name", "User"], ["password_digest", "$2a$04$937vN01PrYX9yzxoioMoTO5BqYbynclhSoya3WHAJVRm3.g0WdKdu"], ["remember_token", "122fba674580e731b4e53a1fe3ec6ece8ba9ca03"], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("created_at", "name", "priority", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00], ["name", "Some Task"], ["priority", 1], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+Started POST "/sessions" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"email"=>"user3@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'user3@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "1501ec498ee31d4c229f6f57c495926e2be97431"], ["updated_at", Sun, 13 Apr 2014 23:22:46 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/tasks
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/tasks" for 127.0.0.1 at 2014-04-13 19:22:46 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '1501ec498ee31d4c229f6f57c495926e2be97431' LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?  [["user_id", 1]]
+  Rendered tasks/index.haml within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "tasks";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tasks';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
