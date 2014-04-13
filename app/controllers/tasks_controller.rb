@@ -25,13 +25,12 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
-    @task.user = current_user
+    @task = User.find(current_user.id).tasks.create(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_path, notice: 'Task was successfully created.' }
-        format.json { render action: 'show', status: :created, location: tasks_path }
+        format.html { redirect_to current_user, notice: 'Task was successfully created.' }
+        format.json { render action: 'show', status: :created, location: current_user }
       else
         format.html { render action: 'new' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -53,6 +52,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def complete
+    @task = Task.find(params[:id])
+    @task.update(complete: true)
+    render :refresh
+  end
+
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
@@ -72,12 +77,5 @@ class TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:name, :priority)
-    end
-
-    def require_login
-      if !signed_in?
-        flash[:error] = "You must be logged in to view your tasks."
-        redirect_to signin_path
-      end
     end
 end

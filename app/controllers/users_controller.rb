@@ -1,9 +1,24 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users/1
   # GET /users/1.json
+
+  def index
+    respond_to do |format|
+      if signed_in?
+        format.html { redirect_to current_user }
+        format.json { render action: 'show', status: :ok, location: current_user }
+      else 
+        format.html { redirect_to sign_in }
+        format.json { redirect_to sign_in }
+      end
+    end
+  end
+
   def show
+    @user = User.includes(:tasks).find(params[:id])
   end
 
   # GET /users/new
@@ -23,7 +38,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to tasks_path, notice: "You have successfully registered for Task RPG!" }
+        format.html { redirect_to @user, notice: "You have successfully registered for Task RPG!" }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

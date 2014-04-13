@@ -1,7 +1,12 @@
 Taskrpg::Application.routes.draw do
 
   resources :users
-  resources :tasks
+
+  resources :tasks do
+    member do
+      get :complete
+    end
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
 

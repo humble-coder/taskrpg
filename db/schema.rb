@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408180839) do
+ActiveRecord::Schema.define(version: 20140412155014) do
 
   create_table "tasks", force: true do |t|
     t.text     "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140408180839) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "complete",   default: false
   end
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"

@@ -1,9 +1,16 @@
 %div{"data-role" => "header"}
   %h1
     = @user.name
-    's Profile
+    's Domain of Tasks
+  
 %div{"data-role" => "content"}
-  %p
-    name: #{@user.name}
+  - @user.tasks.each do |task|
+    %h1= task.name
+    %h1
+      Priority:  #{task.priority}
+    = link_to "Complete", task, method: :complete, "data-role" => "button", "data-inline" => "true"
+    = link_to "Edit", edit_task_path(task), "data-role" => "button", "data-inline" => "true"
+  = link_to "New Task", new_task_path, "data-role" => "button", "data-inline" => "true"
+
 %div{"data-role" => "footer"}
-  = link_to 'Your Tasks', tasks_path
+  = link_to 'Clean Slate', tasks_path, method: :clear, "data-role" => "button", "data-inline" => "true"

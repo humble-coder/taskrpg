@@ -7,7 +7,7 @@
     %h1= task.name
     %h1
       Priority:  #{task.priority}
-    = link_to "Complete", task, method: :delete, "data-role" => "button", "data-inline" => "true"
+    = link_to "Complete", task, method: :get, "data-role" => "button", "data-inline" => "true"
     = link_to "Edit", edit_task_path(task), "data-role" => "button", "data-inline" => "true"
 %div{"data-role" => "footer"}
   = link_to 'New Task', new_task_path
