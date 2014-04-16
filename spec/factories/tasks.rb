@@ -5,5 +5,9 @@ FactoryGirl.define do
     name "Some Task"
     priority 1
     user
+
+    factory :complete_task do
+    	complete true
+    end
   end
 end

@@ -9,8 +9,9 @@ feature 'Member completes task' do
   end
 
 	scenario 'successfully' do
-		click_button('Complete')
+		click_link('Complete')
 
-		expect(page).to have_content('My Task Priority: 1')
+		expect(page).to have_content('Task was successfully completed.')
+		expect(page).to have_content('Some Task Priority: 1')
 	end
 end

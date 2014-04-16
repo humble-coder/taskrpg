@@ -1,31 +1,28 @@
 class TasksController < ApplicationController
   before_action :require_login
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:edit, :update, :complete, :restore, :destroy]
 
-  # GET /tasks
-  # GET /tasks.json
   def index
-    @tasks = current_user.tasks
+    respond_to do |format|
+      if signed_in?
+        format.html { redirect_to current_user }
+        format.json { render action: 'show', status: :ok, location: current_user }
+      else
+        format.html { redirect_to sign_in }
+        format.json { redirect_to sign_in }
+      end
+    end
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
-  def show
-  end
-
-  # GET /tasks/new
   def new
     @task = Task.new
   end
 
-  # GET /tasks/1/edit
   def edit
   end
 
-  # POST /tasks
-  # POST /tasks.json
   def create
-    @task = User.find(current_user.id).tasks.create(task_params)
+    @task = current_user.tasks.create(task_params)
 
     respond_to do |format|
       if @task.save
@@ -38,12 +35,10 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -52,29 +47,65 @@ class TasksController < ApplicationController
     end
   end
 
-  def complete
-    @task = Task.find(params[:id])
-    @task.update(complete: true)
+  def clear
+    @tasks = Task.where('user_id = ? AND complete = ?', current_user.id, true)
+    @tasks.destroy_all
+
+    respond_to do |format|
+      if @tasks.destroy_all
+        format.html { redirect_to current_user, notice: "Completed tasks were successfully deleted." }
+        format.json { head :no_content }
+      else
+        format.html { render current_user, notice: "Unable to clear tasks. Please try again." }
+        format.json { render action: 'show', status: :unprocessable_entity, location: current_user }
+      end
+    end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.json
+  def complete
+    @task.update(complete: true)
+
+    respond_to do |format|
+      if @task.complete
+        format.html { redirect_to current_user, notice: 'Task was successfully completed.' }
+        format.json { head :no_content }
+      else
+        format.html { render current_user, notice: 'Unable to mark task as complete. Please try again.' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def restore
+    @task.update(complete: false)
+
+    respond_to do |format|
+      if !@task.complete
+        format.html { redirect_to current_user, notice: 'Task was successfully restored.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to current_user, notice: 'Unable to mark task as active. Please try again.' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @task.destroy
+
     respond_to do |format|
-      format.html { redirect_to tasks_path, notice: 'Task was successfully completed.' }
+      format.html { redirect_to current_user, notice: 'Task was successfully deleted.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_task
       @task = Task.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def task_params
-      params.require(:task).permit(:name, :priority)
+      params.require(:task).permit(:name, :priority, :complete)
     end
 end

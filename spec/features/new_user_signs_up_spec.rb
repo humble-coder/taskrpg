@@ -15,7 +15,7 @@ feature 'User signs up' do
 		click_button('Sign Up')
 
 		expect(page).to have_content("Your Stats")
-		expect(page).to have_content("Your Tasks")
+		expect(page).to have_content("Active Tasks")
 	end
 
 	scenario 'with blank name' do

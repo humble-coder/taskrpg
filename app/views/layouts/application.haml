@@ -7,7 +7,7 @@
       = javascript_include_tag "application", "data-turbolinks-track" => true
       = csrf_meta_tags
   %body
-    %div{"data-role" => "page"}
+    %div{"data-role" => "page", "data-url" => request.path}
       - if signed_in?
         = link_to current_user.email, current_user, "data-role" => "button", "data-inline" => "true"
         = link_to 'Sign Out', signout_path, method: "delete", "data-role" => "button", "data-inline" => "true"

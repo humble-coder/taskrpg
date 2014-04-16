@@ -3,8 +3,13 @@ Taskrpg::Application.routes.draw do
   resources :users
 
   resources :tasks do
+    collection do
+      get :clear
+    end
+    
     member do
       get :complete
+      get :restore
     end
   end
 
