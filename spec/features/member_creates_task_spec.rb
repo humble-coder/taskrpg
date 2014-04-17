@@ -24,4 +24,12 @@ feature 'Member creates task' do
 		expect(page).to have_content("Name can't be blank")
 		expect(page).to_not have_content('Priority: 2')
 	end
+
+	scenario 'but then cancels' do
+		click_link('Back')
+
+		expect(page).to have_content('Your Stats')
+		expect(page).to have_content('Active Tasks')
+		expect(page).to have_content('Completed Tasks')
+	end
 end
