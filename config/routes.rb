@@ -8,8 +8,7 @@ Taskrpg::Application.routes.draw do
     end
     
     member do
-      get :complete
-      get :restore
+      get :complete, :restore
     end
   end
 

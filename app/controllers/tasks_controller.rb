@@ -16,6 +16,10 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @options = []
+    current_user.options.each do |option|
+      @options << option.value
+    end
   end
 
   def edit
@@ -23,6 +27,9 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.create(task_params)
+    current_user.options.each do |option|
+      option.destroy if option.value == @task.priority
+    end
 
     respond_to do |format|
       if @task.save
@@ -70,7 +77,7 @@ class TasksController < ApplicationController
         format.html { redirect_to current_user, notice: 'Task was successfully completed.' }
         format.json { head :no_content }
       else
-        format.html { render current_user, notice: 'Unable to mark task as complete. Please try again.' }
+        format.html { redirect_to current_user, notice: 'Unable to mark task as complete. Please try again.' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -91,11 +98,17 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task.user.options.create(value: @task.priority)
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to current_user, notice: 'Task was successfully deleted.' }
-      format.json { head :no_content }
+      if current_user.level_up?
+        format.html { redirect_to current_user, notice: 'Task was successfully deleted. And you leveled up!' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to current_user, notice: 'Task was successfully deleted. And you gained 100 exp!' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -106,6 +119,6 @@ class TasksController < ApplicationController
     end
     
     def task_params
-      params.require(:task).permit(:name, :priority, :complete)
+      params.require(:task).permit(:name, :priority)
     end
 end

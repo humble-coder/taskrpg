@@ -16,6 +16,6 @@
       = f.label :priority
       (1 is top priority)
       %br
-        = f.select(:priority, options_for_select([1, 2, 3, 4, 5]))
+        = f.select(:priority, options_for_select(@options))
     .actions
       = f.submit

@@ -6,6 +6,12 @@
 %div{"data-role" => "content"}
   %div{"data-role" => "collapsible"}
     %h2 Your Stats
+    %h3 Level:
+    = @user.level
+    %h3 Current Exp:
+    = @user.exp
+    %h3 Next Level:
+    = @user.next_level
   
   %div{"data-role" => "collapsible", "data-collapsed" => "false"}
     %h2 Active Tasks
@@ -16,7 +22,8 @@
       = link_to "Complete", complete_task_path(task), "data-role" => "button", "data-inline" => "true"
       = link_to "Edit", edit_task_path(task), "data-role" => "button", "data-inline" => "true"
     %br
-    = link_to "New Task", new_task_path, "data-role" => "button", "data-inline" => "true"
+    - if current_user.tasks.length < 5
+      = link_to "New Task", new_task_path, "data-role" => "button", "data-inline" => "true"
 
   %div{"data-role" => "collapsible"}
     %h2 Completed Tasks
@@ -25,6 +32,7 @@
       %h1
         Priority:  #{task.priority}
       = link_to "Restore", restore_task_path(task), "data-role" => "button", "data-inline" => "true"
+      = link_to "Get Exp", task, method: :delete, "data-role" => "button", "data-inline" => "true"
     %br
     = link_to 'Clear Completed Tasks', clear_tasks_path, "data-role" => "button", "data-inline" => "true"
 
