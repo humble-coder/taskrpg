@@ -16,6 +16,7 @@ feature 'Member logs in' do
 		expect(page).to have_content("Your Stats")
 		expect(page).to have_content("Active Tasks")
 		expect(page).to have_content("Completed Tasks")
+		expect(user.remember_token).to_not eq("")
 	end
 
 	scenario 'without email' do

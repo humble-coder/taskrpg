@@ -12,6 +12,6 @@ feature 'Member clears complete tasks' do
 		click_link('Clear Completed Tasks')
 
 		expect(page).to have_content("Completed tasks were successfully deleted.")
-		expect(page).to_not have_content("Some Task")
+		expect(user.tasks.length).to eq(0)
 	end
 end

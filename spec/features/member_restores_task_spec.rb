@@ -12,5 +12,6 @@ feature 'Member restores task' do
 		click_link('Restore')
 
 		expect(page).to have_content('Task was successfully restored.')
+		expect(Task.find(task.id).complete).to eq(false)
 	end
 end

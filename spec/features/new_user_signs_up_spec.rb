@@ -16,6 +16,8 @@ feature 'User signs up' do
 
 		expect(page).to have_content("Your Stats")
 		expect(page).to have_content("Active Tasks")
+		expect(page).to have_content("Completed Tasks")
+		expect(User.first.options.length).to eq(5)
 	end
 
 	scenario 'with blank name' do

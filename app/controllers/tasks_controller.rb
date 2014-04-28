@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :require_login
   before_action :set_task, only: [:edit, :update, :complete, :restore, :destroy]
+  before_action :add_options, only: [:new, :edit, :create, :update]
 
   def index
     respond_to do |format|
@@ -16,10 +17,6 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @options = []
-    current_user.options.each do |option|
-      @options << option.value
-    end
   end
 
   def edit
@@ -27,9 +24,6 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.create(task_params)
-    current_user.options.each do |option|
-      option.destroy if option.value == @task.priority
-    end
 
     respond_to do |format|
       if @task.save
@@ -43,6 +37,7 @@ class TasksController < ApplicationController
   end
 
   def update
+
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to current_user, notice: 'Task was successfully updated.' }
@@ -113,6 +108,13 @@ class TasksController < ApplicationController
   end
 
   private
+
+    def add_options
+      @options = []
+      current_user.options.each do |option|
+        @options << option.value
+      end
+    end
 
     def set_task
       @task = Task.find(params[:id])

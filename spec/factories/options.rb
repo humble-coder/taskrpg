@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :option do
     value 1
-    user nil
+    user
   end
 end
