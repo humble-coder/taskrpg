@@ -13,5 +13,6 @@ feature 'Member completes task' do
 
 		expect(page).to have_content('Task was successfully completed.')
 		expect(page).to have_content('Some Task Priority: 1')
+		expect(Task.find(task.id).complete).to eq(true)
 	end
 end
