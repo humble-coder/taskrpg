@@ -16,51 +16,55 @@ describe User, '.hash' do
   end
 end
 
-describe User, '#next_level' do
-	it 'calculates how many exp a user needs until next level' do
-		user = create(:user)
-		expect(user.next_level).to eq(1000)
+describe User, 'instance methods' do
 
-		user.update_attribute(:level, 2)
-		expect(user.next_level).to eq(2000)
+	let(:user) { create :user }
+	
+	describe '#next_level' do
+		it 'calculates how many exp a user needs until next level' do
+			expect(user.next_level).to eq(1000)
 
-		user.update_attribute(:level, 3)
-		expect(user.next_level).to eq(3000)
+			user.update_attribute(:level, 2)
+			expect(user.next_level).to eq(2000)
 
-		user.update_attribute(:level, 4)
-		expect(user.next_level).to eq(5000) # Fibonacci exp progression
+			user.update_attribute(:level, 3)
+			expect(user.next_level).to eq(3000)
+
+			user.update_attribute(:level, 4)
+			expect(user.next_level).to eq(5000) # Fibonacci exp progression
+		end
+	end
+
+	describe '#level_up?' do
+		it 'returns true if user has enough exp to gain a level' do
+			expect(user.level_up?).to eq(false)
+
+			user.update_attribute(:exp, 1000)
+			expect(user.level_up?).to eq(true)
+		end
+	end
+
+	describe User, '#add_exp' do
+		it 'increases users exp total by 100' do
+			expect(user.exp).to eq(0)
+
+			user.add_exp
+			expect(user.exp).to eq(100)
+		end
+	end
+
+	describe User, '#level_up' do
+		it 'increases users level by one' do
+			user = create(:user)
+			expect(user.level).to eq(1)
+
+			user.level_up
+			expect(user.level).to eq(2)
+		end
 	end
 end
 
-describe User, '#level_up?' do
-	it 'returns true if user has enough exp to gain a level' do
-		user = create(:user)
-		expect(user.level_up?).to eq(false)
 
-		user.update_attribute(:exp, 1000)
-		expect(user.level_up?).to eq(true)
-	end
-end
-
-describe User, '#add_exp' do
-	it 'increases users exp total by 100' do
-		user = create(:user)
-		expect(user.exp).to eq(0)
-
-		user.add_exp
-		expect(user.exp).to eq(100)
-	end
-end
-
-describe User, '#level_up' do
-	it 'increases users level by one' do
-		user = create(:user)
-		expect(user.level).to eq(1)
-
-		user.level_up
-		expect(user.level).to eq(2)
-	end
-end
 
 
 
