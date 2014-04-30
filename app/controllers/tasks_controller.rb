@@ -36,8 +36,19 @@ class TasksController < ApplicationController
     end
   end
 
-  def update
+  def show
+    respond_to do |format|
+      if signed_in?
+        format.html { redirect_to current_user }
+        format.json { render action: 'show', status: :ok, location: current_user }
+      else
+        format.html { redirect_to sign_in }
+        format.json { redirect_to sign_in }
+      end
+    end
+  end
 
+  def update
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to current_user, notice: 'Task was successfully updated.' }

@@ -55,7 +55,6 @@ describe User, 'instance methods' do
 
 	describe User, '#level_up' do
 		it 'increases users level by one' do
-			user = create(:user)
 			expect(user.level).to eq(1)
 
 			user.level_up
