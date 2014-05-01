@@ -15,7 +15,7 @@ feature 'Member edits task' do
 
 		expect(page).to have_content('Task was successfully updated.')
 		expect(page).to have_content('Updated Task Priority: 1')
-		expect(page).to have_content("User 's Domain")
+		expect(page).to have_content("User's Domain")
 	end
 
 	scenario 'successfully (task priority)' do
@@ -24,7 +24,7 @@ feature 'Member edits task' do
 
 		expect(page).to have_content('Task was successfully updated.')
 		expect(page).to have_content('Some Task Priority: 3')
-		expect(page).to have_content("User 's Domain")
+		expect(page).to have_content("User's Domain")
 	end
 
 	scenario 'without a name' do
@@ -32,6 +32,6 @@ feature 'Member edits task' do
 		click_button('Update Task')
 
 		expect(page).to have_content("Name can't be blank")
-		expect(page).to_not have_content("User 's Domain")
+		expect(page).to_not have_content("User's Domain")
 	end
 end
