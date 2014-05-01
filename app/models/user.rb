@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 	has_many :tasks, -> { order(priority: :asc) }, dependent: :destroy
 	validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, :if => :validate_password?
+  validates :password_confirmation, presence: true, :if => :validate_password?
   has_many :options, -> { order(value: :asc) }, dependent: :destroy
 
   def User.new_remember_token
@@ -15,6 +16,10 @@ class User < ActiveRecord::Base
 
   def User.hash(token)
   	Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def validate_password?
+    password.present? || password_confirmation.present? || self.new_record?
   end
 
   def next_level

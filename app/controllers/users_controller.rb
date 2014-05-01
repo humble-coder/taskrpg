@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: [:new, :create]
 
   def index
     respond_to do |format|
@@ -38,15 +38,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
   def update
     @user = current_user
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_path(@user), notice: "You have successfully updated your profile." }
+        format.html { redirect_to user_path(@user), notice: "You have successfully updated your information." }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit', notice: "Your information wasn't updated. Please try again." }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -55,7 +59,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'user was successfully completed.' }
+      format.html { redirect_to root_path, notice: 'Your information was successfully deleted.' }
       format.json { head :no_content }
     end
   end
