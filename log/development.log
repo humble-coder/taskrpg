@@ -24447,3 +24447,208 @@ Completed 200 OK in 16ms (Views: 10.2ms | ActiveRecord: 1.0ms)
   [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140417211403')[0m
   [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140421230149')
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-03 18:39:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (11.4ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '5d284c5b9cbb2049983a3a8adf9e209ed23b2972' LIMIT 1
+Completed 200 OK in 4002ms (Views: 3977.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/jquery.mobile.css?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/jquery.mobile.js?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/to_dos.js?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-03 18:39:07 -0400
+
+
+Started GET "/assets/jquery-mobile/ajax-loader.gif" for 127.0.0.1 at 2014-05-03 18:39:08 -0400
+
+
+Started GET "/signup" for 127.0.0.1 at 2014-05-03 18:39:27 -0400
+Processing by UsersController#new as HTML
+  Rendered users/_form.haml (22.6ms)
+  Rendered users/new.haml within layouts/application (35.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '5d284c5b9cbb2049983a3a8adf9e209ed23b2972' LIMIT 1[0m
+Completed 200 OK in 60ms (Views: 57.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-05-03 18:39:35 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Bdew2C6mxpetiMdL1RGq6Fhj57WWGnaKsLXTyApRB88=", "user"=>{"name"=>"Mark", "email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (8.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('mark.philosophe@gmail.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (4.7ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["email", "mark.philosophe@gmail.com"], ["name", "Mark"], ["password_digest", "$2a$10$qAijqjhZJUZejdvPL27fquaaPbumqNEqFIGkVG5Bwrbmvoz//jWjW"], ["remember_token", "1fc80fdc9179a2befc36978ed0054ffaca5285dc"], ["updated_at", Sat, 03 May 2014 22:39:35 UTC +00:00]]
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "options" ("created_at", "updated_at", "user_id", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["updated_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["user_id", 1], ["value", 1]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "options" ("created_at", "updated_at", "user_id", "value") VALUES (?, ?, ?, ?)  [["created_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["updated_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["user_id", 1], ["value", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "options" ("created_at", "updated_at", "user_id", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["updated_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["user_id", 1], ["value", 3]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "options" ("created_at", "updated_at", "user_id", "value") VALUES (?, ?, ?, ?)  [["created_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["updated_at", Sat, 03 May 2014 22:39:35 UTC +00:00], ["user_id", 1], ["value", 4]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "options" ("created_at", "updated_at", "user_id", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 03 May 2014 22:39:36 UTC +00:00], ["updated_at", Sat, 03 May 2014 22:39:36 UTC +00:00], ["user_id", 1], ["value", 5]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE (LOWER("users"."email") = LOWER('mark.philosophe@gmail.com') AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "1e781172895502f77db9c1d1629454347cce7500"], ["updated_at", Sat, 03 May 2014 22:39:36 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 163ms (ActiveRecord: 17.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-05-03 18:39:36 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '1e781172895502f77db9c1d1629454347cce7500' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1) ORDER BY "tasks"."priority" ASC[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."priority" ASC  [["user_id", 1]]
+  Rendered users/show.haml within layouts/application (9.0ms)
+Completed 200 OK in 91ms (Views: 18.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2014-05-03 18:39:40 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '1e781172895502f77db9c1d1629454347cce7500' LIMIT 1[0m
+  Rendered users/_edit_form.haml (5.9ms)
+  Rendered users/edit.haml within layouts/application (12.1ms)
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/users/1" for 127.0.0.1 at 2014-05-03 18:39:48 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Bdew2C6mxpetiMdL1RGq6Fhj57WWGnaKsLXTyApRB88=", "user"=>{"name"=>"Mark", "email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '1e781172895502f77db9c1d1629454347cce7500' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE (LOWER("users"."email") = LOWER('mark.philosophe@gmail.com') AND "users"."id" != 1) LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["password_digest", "$2a$10$pFav13xZSrH2seOnTLW4PugCQ9CGim4aEJbaB94g/bSFYGKuOChHa"], ["updated_at", Sat, 03 May 2014 22:39:48 UTC +00:00]]
+  [1m[35m (8.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 105ms (ActiveRecord: 9.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-05-03 18:39:48 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '1e781172895502f77db9c1d1629454347cce7500' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1) ORDER BY "tasks"."priority" ASC[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."priority" ASC  [["user_id", 1]]
+  Rendered users/show.haml within layouts/application (2.3ms)
+Completed 200 OK in 14ms (Views: 10.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2014-05-03 18:39:50 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Bdew2C6mxpetiMdL1RGq6Fhj57WWGnaKsLXTyApRB88="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '1e781172895502f77db9c1d1629454347cce7500' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "54933eaf1d3229184baf6a35d80c70cd154ed754"], ["updated_at", Sat, 03 May 2014 22:39:50 UTC +00:00]]
+  [1m[35m (8.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-03 18:39:50 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (4.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2014-05-03 18:39:57 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Bdew2C6mxpetiMdL1RGq6Fhj57WWGnaKsLXTyApRB88=", "session"=>{"email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'mark.philosophe@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  UPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["remember_token", "d482e802a740158fc2fa6b7f1b6470ce6cd0e820"], ["updated_at", Sat, 03 May 2014 22:39:57 UTC +00:00]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 102ms (ActiveRecord: 10.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-05-03 18:39:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'd482e802a740158fc2fa6b7f1b6470ce6cd0e820' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1) ORDER BY "tasks"."priority" ASC
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."priority" ASC[0m  [["user_id", 1]]
+  Rendered users/show.haml within layouts/application (2.4ms)
+Completed 200 OK in 16ms (Views: 11.8ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2014-05-03 18:39:59 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Bdew2C6mxpetiMdL1RGq6Fhj57WWGnaKsLXTyApRB88="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'd482e802a740158fc2fa6b7f1b6470ce6cd0e820' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["remember_token", "0785803e65b2c2fa0174287bc88a7c1071237b68"], ["updated_at", Sat, 03 May 2014 22:39:59 UTC +00:00]]
+  [1m[36m (8.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-03 18:39:59 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.haml within layouts/application (1.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2014-05-03 18:40:05 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Bdew2C6mxpetiMdL1RGq6Fhj57WWGnaKsLXTyApRB88=", "session"=>{"email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'mark.philosophe@gmail.com' LIMIT 1[0m
+  Rendered sessions/new.haml within layouts/application (2.5ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+Completed 200 OK in 105ms (Views: 12.6ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2014-05-03 18:40:12 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Bdew2C6mxpetiMdL1RGq6Fhj57WWGnaKsLXTyApRB88=", "session"=>{"email"=>"mark.philosophe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'mark.philosophe@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["remember_token", "300a160f67f89f779f48a04c8b417965681da3cd"], ["updated_at", Sat, 03 May 2014 22:40:13 UTC +00:00]]
+  [1m[35m (8.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 108ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-05-03 18:40:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = '300a160f67f89f779f48a04c8b417965681da3cd' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (1) ORDER BY "tasks"."priority" ASC[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ? ORDER BY "tasks"."priority" ASC  [["user_id", 1]]
+  Rendered users/show.haml within layouts/application (2.1ms)
+Completed 200 OK in 18ms (Views: 12.7ms | ActiveRecord: 0.8ms)

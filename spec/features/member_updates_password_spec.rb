@@ -15,8 +15,6 @@ feature 'Member updates password' do
 		click_button('Update')
 
 		expect(page).to have_content('You have successfully updated your information')
-		click_link('Sign Out')
-		sign_in(user)
 		expect(page).to have_content("User's Domain")
 	end
 
