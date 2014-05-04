@@ -1,0 +1,10 @@
+%h1 Password Reset
+%div{"data-role" => "content"}
+  = form_for(:password_reset, url: password_reset_index_path) do |f|
+    .field
+      = f.label :email
+      = f.text_field :email
+    .actions
+      = f.submit "Reset Password"
+  %p
+    Suddenly remember your password? Great! #{link_to "Sign in!", signin_path}

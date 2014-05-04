@@ -2,6 +2,8 @@ Taskrpg::Application.routes.draw do
 
   resources :users
 
+  resources :password_reset, only: [:new, :create]
+
   resources :tasks do
     collection do
       get :clear

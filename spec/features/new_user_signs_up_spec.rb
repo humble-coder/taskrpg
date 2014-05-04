@@ -27,6 +27,8 @@ feature 'User signs up' do
 		click_button('Sign Up')
 
 		expect(page).to have_content("Name can't be blank")
+		expect(page).to have_content("Sign Up")
+		expect(page).to have_content("Sign In")
 	end
 
 	scenario 'with blank email' do
@@ -36,6 +38,8 @@ feature 'User signs up' do
 		click_button('Sign Up')
 
 		expect(page).to have_content("Email can't be blank")
+		expect(page).to have_content("Sign Up")
+		expect(page).to have_content("Sign In")
 	end
 
 	scenario 'with blank password' do
@@ -45,6 +49,8 @@ feature 'User signs up' do
 		click_button('Sign Up')
 
 		expect(page).to have_content("Password can't be blank Password is too short")
+		expect(page).to have_content("Sign Up")
+		expect(page).to have_content("Sign In")
 	end
 
 	scenario 'with blank password confirmation' do
@@ -54,6 +60,8 @@ feature 'User signs up' do
 		click_button('Sign Up')
 
 		expect(page).to have_content("Password confirmation doesn't match")
+		expect(page).to have_content("Sign Up")
+		expect(page).to have_content("Sign In")
 	end
 
 	scenario 'with mismatching password and password confirmation' do
@@ -64,6 +72,22 @@ feature 'User signs up' do
 		click_button('Sign Up')
 
 		expect(page).to have_content("Password confirmation doesn't match")
+		expect(page).to have_content("Sign Up")
+		expect(page).to have_content("Sign In")
+	end
+
+	scenario 'with email already taken' do
+		create(:user)
+
+		fill_in 'Name', with: 'New User'
+		fill_in 'Email', with: User.first.email
+		fill_in 'Password', with: 'Password'
+		fill_in 'Password confirmation', with: 'Password'
+		click_button('Sign Up')
+
+		expect(page).to have_content("Email has already been taken")
+		expect(page).to have_content("Sign Up")
+		expect(page).to have_content("Sign In")
 	end
 
 end
