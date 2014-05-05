@@ -41,6 +41,7 @@ group :development, :test do
   gem 'pry'
 end
 
+gem 'pg'
 gem 'jquery_mobile_rails'
 gem 'haml'
 gem "haml-rails"

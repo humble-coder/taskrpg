@@ -113,7 +113,7 @@ describe "Tasks (members)" do
     it "redirects member to his/her page" do
       get tasks_path
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
     end
   end
 
@@ -122,16 +122,16 @@ describe "Tasks (members)" do
       post tasks_path, task: {name: "My Task", priority: 1}
 
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
       expect(Task.last.name).to eq("My Task")
     end
   end
 
-  describe "GET /tasks/1/edit for member" do
+  describe "GET /tasks/id/edit for member" do
     it "displays task form for editing" do
       post tasks_path, task: {name: "My Task", priority: 2}
 
-      get edit_task_path(1)
+      get edit_task_path(Task.last.id)
       response.status.should be(200)
     end
   end
@@ -141,28 +141,28 @@ describe "Tasks (members)" do
 
       get clear_tasks_path
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
       expect(User.first.tasks.length).to eq(0)
     end
   end
 
-  describe "GET /tasks/1/restore for member" do
+  describe "GET /tasks/id/restore for member" do
     it "updates task's complete attribute to false" do
 
-      get restore_task_path(1)
+      get restore_task_path(Task.first.id)
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
       expect(Task.first.complete).to eq(false)
     end
   end
 
-  describe "GET /tasks/6/complete for member" do
+  describe "GET /tasks/id/complete for member" do
     it "updates task's complete status to true and then redirects to user's page" do
       post tasks_path, task: {name: "My Task", priority: 2}
 
-      get complete_task_path(6)
+      get complete_task_path(Task.last.id)
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
       expect(Task.all[5].complete).to eq(true)
     end
   end
@@ -175,40 +175,40 @@ describe "Tasks (members)" do
     end
   end
 
-  describe "PATCH /tasks/1 for member" do
+  describe "PATCH /tasks/id for member" do
     it "redirects member back to his/her page after updating" do
 
-      patch task_path(1), task: { name: "Updated" }
+      patch task_path(Task.first.id), task: { name: "Updated" }
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
     end
   end
 
-  describe "PUT /tasks/1 for member" do
+  describe "PUT /tasks/id for member" do
     it "redirects member back to his/her page after updating" do
 
-      put task_path(1), task: { priority: 2 }
+      put task_path(Task.first.id), task: { priority: 2 }
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
     end
   end
 
-  describe "DELETE /tasks/1 for member" do
+  describe "DELETE /tasks/id for member" do
     it "redirects member back to his/her page after deleting task" do
 
-      delete task_path(1)
+      delete task_path(Task.first.id)
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
       expect(user.tasks.length).to eq(4)
     end
   end
 
-  describe "GET /tasks/1 for member" do
+  describe "GET /tasks/id for member" do
     it "redirects member back to his/her page" do
 
-      get task_path(1)
+      get task_path(Task.first.id)
       response.status.should be(302)
-      expect(response).to redirect_to("/users/1")
+      expect(response).to redirect_to("/users/" + user.id.to_s)
     end
   end
 end
