@@ -23,6 +23,7 @@ module Taskrpg
     I18n.enforce_available_locales = true
 
     config.assets.version = '1.0'
+    config.serve_static_assets = true
     config.assets.initialize_on_precompile = false
     
     config.before_configuration do
