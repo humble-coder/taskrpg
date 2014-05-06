@@ -38,6 +38,7 @@ group :development, :test do
   gem 'pry'
 end
 
+gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'jquery_mobile_rails'
 gem 'haml'
