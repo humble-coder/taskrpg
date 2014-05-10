@@ -5,7 +5,7 @@ describe UserMailer do
 	let(:user) { create :user }
   let(:email) { UserMailer.password_reset(user).deliver }
 
-  it "has a from address of admin@task.rpg" do
+  it "contains the appropriate information for the user" do
   	expect(email.to).to eq([user.email])
   	expect(email.from).to eq(["admin@taskrpg.com"])
   	expect(email.subject).to eq("Password Reset")
